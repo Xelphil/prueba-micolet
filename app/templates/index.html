@@ -15,7 +15,7 @@
                     {{ form.csrf_token }}
                     <div>
                         {{ form.email.label }}
-                        {{ form.email(class_="form-control") }}
+                        {{ form.email(class_="form-control", pattern_="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$") }}
                     </div>
                     <div class="form-check">
                         {{ form.mujer(class_="form-check-input") }}
