@@ -1,6 +1,6 @@
 import os
 from sqlalchemy import Column
-from sqlalchemy.dialects.mysql import VARCHAR
+from sqlalchemy.dialects.mysql import VARCHAR, Integer, String
 from app import db
 
 class Micotel(db.Model):
