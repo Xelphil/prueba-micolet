@@ -1,14 +1,18 @@
-from flask import render_template, request, Flask
+from flask import render_template, request, Flask, redirect, url_for
 from app import app
+from app.forms import LoginForm
 
-@app.route('/')
-@app.route('/index')
+@app.route('/', methods=['GET', 'POST'])
+@app.route('/index', methods=['GET', 'POST'])
 def index():
-    return render_template('index.html')
+    form=LoginForm()
+    if form.validate_on_submit():
+        print("datos enviados correctamente")
+        return redirect(url_for('micotel'))
+    else:
+        print("no")
+    return render_template('index.html', form=form)
 
-@app.route('/micolet', methods=['GET', 'POST'])
-def micolet():
-    email = request.form['email']
-    preferencias = request.form['preferencias']
-    print(email)
-    return render_template('index.html', title='Home', user=user)
+@app.route('/micotel', methods=['GET', 'POST'])
+def micotel():
+    return render_template('micotel.html')
